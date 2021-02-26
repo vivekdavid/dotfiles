@@ -1,18 +1,24 @@
 
-
 call plug#begin('~/AppData/Local/nvim/plugged')
 " below are some vim plugins for demonstration purpose.
 " add the plugin you want to use here.
-Plug 'joshdick/onedark.vim'
+
 Plug 'morhetz/gruvbox'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'mattn/emmet-vim',  { 'for': ['html'] }
+
+Plug 'vimwiki/vimwiki'
+
 Plug 'kamykn/spelunker.vim'
 Plug 'junegunn/goyo.vim'
 
 call plug#end()
+
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
 
 let g:airline_theme='base16_chalk'
 colorscheme gruvbox
@@ -29,10 +35,10 @@ function! s:auto_goyo()
   endif
 endfunction
 
-augroup goyo_markdown
-  autocmd!
-  autocmd BufNewFile,BufRead * call s:auto_goyo()
-augroup END
+"augroup goyo_markdown
+":  autocmd!
+"  autocmd BufNewFile,BufRead * call s:auto_goyo()
+"augroup END
 
 "end goyo config 
 
@@ -124,7 +130,7 @@ set hidden
 " Make the gutter for numbers wider by default
 set numberwidth=5
 set display+=lastline
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 set mouse=a
 set ruler " Show the line and column numbers of the cursor.
 set autoread
@@ -140,15 +146,10 @@ set tabstop=4 shiftwidth=4 expandtab
 "set gdefault " use g flag by default on searches
 set number relativenumber
 
-" Autocomplete with dictionary words when spell check is on
-set complete+=kspell
-set mouse=a
-"Here are things you will need to get this working:
-"brew install bat
-"brew install ripgrep
-"you will also need to create a :CocConfig JSON with the following:     "suggest.noselect": false
-" You will also want to run :CocInstall coc-snippets
-"
-"
-" When setting up iTerm2 you can add a badge: https://stackoverflow.com/questions/38475154/set-title-and-badge-text-in-iterm
-  
+
+"autobrackets 
+
+inoremap < <><left>
+inoremap { {}<left>
+inoremap [ []<left>
+
