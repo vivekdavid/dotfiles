@@ -4,36 +4,48 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 " add the plugin you want to use here.
 
 Plug 'morhetz/gruvbox'
-
+Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'mattn/emmet-vim',  { 'for': ['html'] }
+Plug 'tpope/vim-commentary'
 
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'for':['markdown', 'wiki',]}
 
-Plug 'kamykn/spelunker.vim'
-Plug 'junegunn/goyo.vim'
+Plug 'kamykn/spelunker.vim', { 'for':['markdown', 'wiki', 'html',]}
+Plug 'junegunn/goyo.vim', { 'for':['markdown', 'wiki', 'html',]}
+
 
 call plug#end()
 
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
+let g:airline_theme='molokai'
+" colorscheme gruvbox
+colorscheme solarized8_high
 
-let g:airline_theme='base16_chalk'
-colorscheme gruvbox
+
+
+silent! set background = 'light'
+
+
+" let g:gruvbox_contrast_light = 'hard'
 
 " goyo config
 
 function! s:auto_goyo()
   if &ft == 'markdown'
-    Goyo 100 
+    Goyo 10
+	0 
   else
     let bufnr = bufnr('%')
     Goyo!
     execute 'b '.bufnr
   endif
 endfunction
+
+"uncomment the following to autostart goyo for markdown 
 
 "augroup goyo_markdown
 ":  autocmd!
